@@ -17,7 +17,7 @@ React with TypeScript is a powerful combination for building scalable and type-s
 
 To keep your code organized and maintainable, start with a well-structured folder setup:
 
-```plaintext
+```plaintext 
 src/
 |-- assets/           // Static files (images, fonts, etc.)
 |-- components/       // Reusable UI components
@@ -67,7 +67,7 @@ For an advanced React + TypeScript project, consider these essential packages:
 
 Use TypeScript's strong typing to make your code safe and predictable. Define types and interfaces to ensure consistency across components.
 
-```typescript
+```typescript showLineNumbers
 // types/User.ts
 export interface User {
   id: number;
@@ -76,7 +76,7 @@ export interface User {
 }
 ```
 
-```typescript
+```typescript showLineNumbers
 // components/UserCard.tsx
 import { User } from '../types/User';
 
@@ -98,7 +98,7 @@ Avoid redundant code by creating reusable components. Use props and composition 
 
 - **Reusable Button Component**:
 
-  ```typescript
+  ```typescript showLineNumbers
   // components/ui/Button.tsx
   import React from 'react';
 
@@ -119,7 +119,7 @@ Avoid redundant code by creating reusable components. Use props and composition 
 
 Custom hooks allow you to encapsulate and reuse complex logic across components.
 
-```typescript
+```typescript showLineNumbers
 // hooks/useFetchUser.ts
 import { useState, useEffect } from 'react';
 import { User } from '../types/User';
@@ -146,7 +146,7 @@ export default useFetchUser;
 
 Redux Toolkit offers a simplified setup for Redux. Here’s a quick example:
 
-```typescript
+```typescript showLineNumbers
 // store/userSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { User } from '../types/User';
@@ -175,7 +175,7 @@ export default userSlice.reducer;
 
 React Query is ideal for caching server-side state and handling asynchronous data.
 
-```typescript
+```typescript showLineNumbers
 // components/UserProfile.tsx
 import { useQuery } from 'react-query';
 import axios from 'axios';
@@ -227,13 +227,13 @@ components/
 
 - **Lazy Loading Components**: Use React’s `React.lazy()` to load components on demand, reducing initial load time.
 
-  ```typescript
+  ```typescript showLineNumbers
   const UserProfile = React.lazy(() => import('./UserProfile'));
   ```
 
 - **Memoization**: Use `React.memo` and `useCallback` to avoid unnecessary re-renders.
 
-  ```typescript
+  ```typescript showLineNumbers
   import React, { memo } from 'react';
 
   const ExpensiveComponent = memo(({ value }: { value: number }) => {
@@ -250,7 +250,7 @@ components/
 
 - **Use Type Aliases and Enums**: Define custom types and enums to make code more readable and type-safe.
 
-  ```typescript
+  ```typescript showLineNumbers
   type Status = 'loading' | 'success' | 'error';
 
   enum Roles {

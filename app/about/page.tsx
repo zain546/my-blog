@@ -13,7 +13,7 @@ const AboutPage = () => {
           and insights that matter to you.
         </p>
       </section>
-
+    
       {/* Showcase Section */}
       <section className="max-w-6xl mx-auto mb-12">
         <h2 className="text-3xl text-black font-semibold mb-6 text-primary-foreground dark:text-white">

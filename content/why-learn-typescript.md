@@ -48,13 +48,13 @@ Let's look at some key differences through practical code examples.
 ##### Example 1: Variable Typing
 
 **JavaScript**
-```javascript
+```javascript showLineNumbers
 let message = "Hello, world!";
 message = 42; // No error, even though it changes from string to number
 ```
 
 **TypeScript**
-```typescript
+```typescript showLineNumbers
 let message: string = "Hello, world!";
 // message = 42; // Error: Type 'number' is not assignable to type 'string'
 ```
@@ -66,7 +66,7 @@ let message: string = "Hello, world!";
 ##### Example 2: Function Parameter and Return Types
 
 **JavaScript**
-```javascript
+```javascript showLineNumbers
 function greet(name) {
   return "Hello, " + name;
 }
@@ -75,7 +75,7 @@ console.log(greet(42)); // Outputs: Hello, 42
 ```
 
 **TypeScript**
-```typescript
+```typescript showLineNumbers
 function greet(name: string): string {
   return "Hello, " + name;
 }
@@ -92,7 +92,7 @@ function greet(name: string): string {
 TypeScript's interfaces allow you to define the structure of an object, making it clear and maintainable.
 
 **JavaScript**
-```javascript
+```javascript showLineNumbers
 const person = { name: "Alice", age: 30 };
 
 function displayPerson(person) {
@@ -102,7 +102,7 @@ displayPerson(person);
 ```
 
 **TypeScript**
-```typescript
+```typescript showLineNumbers
 interface Person {
   name: string;
   age: number;
@@ -125,7 +125,7 @@ displayPerson(person);
 Enums in TypeScript allow you to define a set of named constants, adding readability and preventing magic numbers or strings.
 
 **JavaScript**
-```javascript
+```javascript showLineNumbers
 const RED = "RED";
 const GREEN = "GREEN";
 const BLUE = "BLUE";
@@ -137,7 +137,7 @@ getColor(RED);
 ```
 
 **TypeScript**
-```typescript
+```typescript showLineNumbers
 enum Color {
   Red = "RED",
   Green = "GREEN",
@@ -159,7 +159,7 @@ getColor(Color.Red);
 Generics allow you to create functions or classes that can work with multiple types, providing flexibility with type safety.
 
 **JavaScript**
-```javascript
+```javascript showLineNumbers
 function identity(value) {
   return value;
 }
@@ -169,7 +169,7 @@ console.log(identity("Hello")); // Works
 ```
 
 **TypeScript**
-```typescript
+```typescript showLineNumbers
 function identity<T>(value: T): T {
   return value;
 }
@@ -233,7 +233,7 @@ To start using TypeScript in a project:
 3. **Compile TypeScript to JavaScript**: Run `tsc` in the terminal to compile `.ts` files into `.js`.
 
 **Example**:
-```typescript
+```typescript showLineNumbers
 // example.ts
 const add = (a: number, b: number): number => {
   return a + b;

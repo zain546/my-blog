@@ -12,7 +12,7 @@
 JavaScript is a dynamic, lightweight, interpreted programming language used mainly to make web pages interactive. Java is a static, object-oriented programming language used to develop standalone applications.
 
 **Example:**    
-```javascript
+```javascript showLineNumbers
 // JavaScript code
 console.log("Hello, JavaScript!");
 ```
@@ -26,7 +26,7 @@ console.log("Hello, JavaScript!");
 - **`const`:** Block-scoped, cannot be redeclared or reassigned.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 var x = 10;
 let y = 20;
 const z = 30;
@@ -42,7 +42,7 @@ y = 25; // Allowed
 A closure is a function that retains access to its outer scope, even after the outer function has finished executing.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 function outer() {
     let counter = 0;
     return function() {
@@ -63,7 +63,7 @@ console.log(increment()); // 2
 - **`===`:** Checks for equality of value and type.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 console.log(2 == "2");  // true (type coercion)
 console.log(2 === "2"); // false (strict equality)
 ```
@@ -76,7 +76,7 @@ console.log(2 === "2"); // false (strict equality)
 - **Asynchronous Code**: Executes non-sequentially, allowing other tasks to run while waiting for a task to complete (e.g., `setTimeout` or `fetch`).
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 // Synchronous
 console.log("Start");
 console.log("End");
@@ -94,7 +94,7 @@ console.log("End");
 A promise is an object that represents the eventual completion (or failure) of an asynchronous operation.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 const promise = new Promise((resolve, reject) => {
     setTimeout(() => resolve("Success"), 1000);
 });
@@ -108,7 +108,7 @@ promise.then(result => console.log(result)); // Logs "Success" after 1 second
 Hoisting is JavaScript's default behavior of moving declarations to the top of the scope. Only variable and function declarations are hoisted, not initializations.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 console.log(x); // undefined due to hoisting
 var x = 5;
 ```
@@ -122,7 +122,7 @@ var x = 5;
 - **`.bind()`:** Returns a new function, permanently binding `this` to the specified object.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 const person = {
     name: "Alice",
     greet(age) {
@@ -145,7 +145,7 @@ boundGreet(35); // Hello, I'm Dave and I'm 35 years old.
 - **`reduce()`:** Executes a reducer function on each element, resulting in a single value.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 const numbers = [1, 2, 3, 4, 5];
 const doubled = numbers.map(num => num * 2); // [2, 4, 6, 8, 10]
 const evens = numbers.filter(num => num % 2 === 0); // [2, 4]
@@ -159,7 +159,7 @@ const sum = numbers.reduce((total, num) => total + num, 0); // 15
 Destructuring allows extracting values from arrays or properties from objects into distinct variables.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 const user = { name: "Alice", age: 25 };
 const { name, age } = user;
 console.log(name); // Alice
@@ -173,7 +173,7 @@ console.log(age);  // 25
 Event delegation is a technique where a single event listener is added to a parent element to handle events for its child elements.
 
 **Example:**
-```html
+```html showLineNumbers
 <div id="parent">
     <button class="child">Click me!</button>
 </div>
@@ -193,8 +193,8 @@ document.getElementById("parent").addEventListener("click", (event) => {
 
 Currying transforms a function that takes multiple arguments into a sequence of functions, each taking a single argument.
 
-**Example:**
-```javascript
+**Example:** 
+```javascript showLineNumbers
 function add(a) {
     return function(b) {
         return a + b;
@@ -211,7 +211,7 @@ console.log(add5(10)); // 15
 `async/await` is a syntactic sugar for handling asynchronous code more easily, making asynchronous code appear synchronous.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 async function fetchData() {
     const response = await fetch("https://api.example.com/data");
     const data = await response.json();
@@ -227,7 +227,7 @@ fetchData();
 Arrow functions provide a shorter syntax and do not have their own `this` context, making them ideal for callbacks and array methods.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 const add = (a, b) => a + b;
 console.log(add(2, 3)); // 5
 ```
@@ -240,7 +240,7 @@ console.log(add(2, 3)); // 5
 - **Throttling**: Limits the rate of execution to a fixed interval, ignoring additional triggers within that period.
 
 **Example (Debouncing):**
-```javascript
+```javascript showLineNumbers
 function debounce(func, delay) {
     let timer;
     return function(...args) {
@@ -258,7 +258,7 @@ function debounce(func, delay) {
 - **Deep Copy**: Copies all levels of data. Changes in nested objects do not affect the original.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 const original = { a: 1, b: { c: 2 } };
 const shallowCopy = { ...original };
 const deepCopy = JSON.parse(JSON.stringify(original));

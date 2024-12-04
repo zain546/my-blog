@@ -47,22 +47,31 @@ export default async function Page({ params }: { params: { slug: string } }) {
     });
   const htmlContent = (await processor.process(content)).toString();
   return (
-    <div className="max-w-5xl mx-auto">
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-2">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col gap-6 sm:gap-8">
+        {/* Title and Author Section */}
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-gray-100">
             {blog.title}
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+          <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 italic">
             By {blog.author}
           </p>
         </div>
-        <p className="text-lg text-gray-700 dark:text-gray-300 border-l-4 border-gray-500 dark:border-gray-400 pl-3">
+
+        {/* Description Section */}
+        <p className="text-base sm:text-lg lg:text-xl text-gray-700 dark:text-gray-300 border-l-4 border-gray-500 dark:border-gray-400 pl-3">
           &#34;{blog.description}&#34;
         </p>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{blog.date}</p>
+
+        {/* Date Section */}
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+          {blog.date}
+        </p>
+
+        {/* Content Section */}
         <div
-          className="prose prose-xl dark:prose-invert"
+          className="  lg:prose-lg dark:prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       </div>

@@ -12,12 +12,12 @@
 As you work with React and TypeScript, managing CSS effectively can make a big difference in the scalability and maintainability of your application. In this post, we’ll cover advanced CSS techniques specifically geared towards React + TypeScript applications, including the use of CSS Modules, Styled Components, CSS animations, and responsive design strategies.
 
 ---
-6
+
 #### 1. **Using CSS Modules for Scoped Styling**
 
 CSS Modules allow you to scope CSS classes locally to components, avoiding global conflicts in large applications. In a TypeScript setup, CSS Modules can be imported directly and used like this:
 
-```tsx
+```tsx showLineNumbers {2} 
 // App.module.css
 .container {
   display: flex;
@@ -33,7 +33,7 @@ CSS Modules allow you to scope CSS classes locally to components, avoiding globa
   background-color: #007bff;
 }
 
-// App.tsx
+// App.tsx showLineNumbers
 import React from 'react';
 import styles from './App.module.css';
 
@@ -48,7 +48,7 @@ export default App;
 
 **Tip:** Create a `*.d.ts` file (e.g., `App.module.css.d.ts`) to declare CSS module types in TypeScript. This helps avoid TypeScript errors when importing CSS Modules:
 
-```typescript
+```typescript showLineNumbers 
 declare module '*.module.css' {
   const classes: { [key: string]: string };
   export default classes;
@@ -61,7 +61,7 @@ declare module '*.module.css' {
 
 Styled Components is a popular CSS-in-JS library for styling React components, with TypeScript support. It’s great for conditional styling, theming, and organizing CSS alongside components.
 
-```tsx
+```tsx showLineNumbers
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -95,7 +95,7 @@ export default App;
 
 Animations bring interactivity to your application, and CSS animations can be triggered in React to enhance user engagement. Using keyframes, you can define animations and apply them based on state.
 
-```tsx
+```tsx showLineNumbers {4}
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
@@ -140,7 +140,7 @@ export default App;
 
 CSS variables can be particularly useful for theming, as they allow you to set values globally and reuse them across components.
 
-```tsx
+```tsx showLineNumbers
 // styles/variables.css
 :root {
   --primary-color: #3498db;
@@ -148,13 +148,13 @@ CSS variables can be particularly useful for theming, as they allow you to set v
   --font-size: 16px;
 }
 
-// App.module.css
+// App.module.css showLineNumbers
 .container {
   font-size: var(--font-size);
   color: var(--primary-color);
 }
 
-// App.tsx
+// App.tsx showLineNumbers
 import React from 'react';
 import './styles/variables.css';
 import styles from './App.module.css';
@@ -176,7 +176,7 @@ export default App;
 
 `clamp()` is a powerful CSS function that allows you to set a minimum, preferred, and maximum size for fonts, creating responsive typography that scales smoothly across devices.
 
-```css
+```css showLineNumbers
 // styles/global.css
 h1 {
   font-size: clamp(1.5rem, 2.5vw, 3rem);
@@ -195,7 +195,7 @@ Responsive design is crucial, and both CSS Modules and Styled Components make ha
 
 **Example with CSS Modules**
 
-```css
+```css showLineNumbers
 // App.module.css
 .container {
   background-color: #f3f3f3;
@@ -209,7 +209,7 @@ Responsive design is crucial, and both CSS Modules and Styled Components make ha
 
 **Example with Styled Components**
 
-```tsx
+```tsx showLineNumbers
 const Container = styled.div`
   background-color: #f3f3f3;
 

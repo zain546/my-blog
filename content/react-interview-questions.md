@@ -13,7 +13,7 @@ React is a JavaScript library created by Facebook for building interactive and e
 
 **Example:**  
 React makes it easy to manage complex UIs by using components. Here’s a simple "Hello, World!" component:
-```javascript
+```javascript showLineNumbers
 import React from 'react';
 
 function HelloWorld() {
@@ -30,7 +30,7 @@ export default HelloWorld;
 JSX (JavaScript XML) is a syntax extension for JavaScript that allows you to write HTML directly within JavaScript. React components often use JSX to structure their output in a familiar syntax.
 
 **Example:**  
-```javascript
+```javascript showLineNumbers
 const element = <h1>Hello, JSX!</h1>;
 ```
 JSX compiles to `React.createElement()` calls, enabling the creation of React elements.
@@ -43,14 +43,14 @@ Components are the building blocks of a React application. A component is a self
 
 **Example:**
 - **Functional Component:**
-  ```javascript
+  ```javascript showLineNumbers
   function Greeting() {
     return <h1>Hello, Functional Component!</h1>;
   }
   ```
 
 - **Class Component:**
-  ```javascript
+  ```javascript showLineNumbers
   import React, { Component } from 'react';
 
   class Greeting extends Component {
@@ -67,7 +67,7 @@ Components are the building blocks of a React application. A component is a self
 The Virtual DOM (VDOM) is a lightweight copy of the actual DOM, which React uses to make UI updates more efficient. Instead of updating the real DOM directly, React updates the VDOM first and then compares it with a previous snapshot. Only the changed parts of the real DOM are updated, improving performance.
 
 **Example:**  
-```javascript
+```javascript showLineNumbers
 const element = <h1>Hello, World!</h1>;
 ReactDOM.render(element, document.getElementById('root'));
 ```
@@ -80,7 +80,7 @@ React first updates `element` in the VDOM, compares it to its previous state, an
 Props (short for "properties") are read-only inputs passed to a component from a parent component. They allow components to communicate and make components reusable by passing different data.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 function Welcome(props) {
   return <h1>Hello, {props.name}!</h1>;
 }
@@ -95,7 +95,7 @@ function Welcome(props) {
 State is an object that holds data specific to a component, and it can change over time. Unlike props, which are passed to a component, state is managed within the component.
 
 **Example:**  
-```javascript
+```javascript showLineNumbers
 import React, { useState } from 'react';
 
 function Counter() {
@@ -121,7 +121,7 @@ React class components have lifecycle methods like:
 - `componentWillUnmount()`: Runs before the component is removed.
 
 **Example:**  
-```javascript
+```javascript showLineNumbers
 class MyComponent extends React.Component {
   componentDidMount() {
     console.log('Mounted!');
@@ -145,7 +145,7 @@ Hooks are functions that let you use state and other React features in functiona
 - `useContext`: For accessing context.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 import React, { useState, useEffect } from 'react';
 
 function Timer() {
@@ -167,7 +167,7 @@ function Timer() {
 In React, events are handled by attaching functions to event attributes. Event handlers in React are camelCased.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 function ClickButton() {
   const handleClick = () => {
     alert('Button clicked!');
@@ -184,7 +184,7 @@ function ClickButton() {
 `useEffect` is a hook used for managing side effects in functional components. It runs after the component renders. You can specify dependencies so that the effect re-runs only when dependencies change.
 
 **Example:**
-```javascript
+```javascript showLineNumbers
 import React, { useState, useEffect } from 'react';
 
 function FetchData() {
@@ -207,7 +207,7 @@ function FetchData() {
 The Context API allows for sharing data globally across components without passing props down manually at each level.
 
 **Example:**  
-```javascript
+```javascript showLineNumbers
 import React, { createContext, useContext } from 'react';
 
 const UserContext = createContext();
@@ -233,7 +233,7 @@ function DisplayUser() {
 `useMemo` memoizes the result of a function, recalculating it only when its dependencies change. This improves performance for expensive calculations.
 
 **Example:**  
-```javascript
+```javascript showLineNumbers
 import React, { useMemo, useState } from 'react';
 
 function ExpensiveComponent() {
@@ -260,7 +260,7 @@ function ExpensiveComponent() {
 `useCallback` returns a memoized function that only changes if its dependencies change, which is useful for avoiding unnecessary re-renders, especially when passing callbacks to child components.
 
 **Example:**  
-```javascript
+```javascript showLineNumbers
 import React, { useState, useCallback } from 'react';
 
 function Button({ onClick }) {

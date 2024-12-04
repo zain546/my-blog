@@ -1,5 +1,7 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+
 
 const BlogSection = () => {
   return (
@@ -20,7 +22,7 @@ const BlogSection = () => {
           <div className="group bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] border border-[hsl(var(--border))] rounded-lg shadow-lg overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-2xl">
             <div className="relative w-full h-56">
               <Image
-                src="https://images.unsplash.com/photo-1720048170970-3848514c3d60?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1526328828355-69b01701ca6a?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Blog Post 1"
                 layout="fill"
                 objectFit="cover"
@@ -28,17 +30,18 @@ const BlogSection = () => {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-2">Blog Post Title 1</h3>
+              <h3 className="text-2xl font-semibold mb-2">
+                JS Interview Questions
+              </h3>
               <p className="text-[hsl(var(--muted-foreground))]">
-                A brief overview of the first blog post. Get insights on the
-                latest trends and tips.
+                Prepare the JavaScript interview questions.
               </p>
-              <a
-                href="#"
+              <Link
+                href="/blogpost/js-interview-questions"
                 className="mt-4 inline-block text-[hsl(var(--primary))] font-semibold  transition-colors"
               >
                 Read More →
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -46,7 +49,7 @@ const BlogSection = () => {
           <div className="group bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] border border-[hsl(var(--border))] rounded-lg shadow-lg overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-2xl">
             <div className="relative w-full h-56">
               <Image
-                src="https://images.unsplash.com/photo-1728985630341-075aa9277eda?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1607706009771-de8808640bcf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Blog Post 2"
                 layout="fill"
                 objectFit="cover"
@@ -54,13 +57,14 @@ const BlogSection = () => {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-2">Blog Post Title 2</h3>
+              <h3 className="text-2xl font-semibold mb-2">
+                React Interview Questions
+              </h3>
               <p className="text-[hsl(var(--muted-foreground))]">
-                Discover how to grow your skills and stay ahead in the
-                competitive landscape.
+                Prepare the React JS/TS interview questions.
               </p>
               <a
-                href="#"
+                href="/blogpost/react-interview-questions"
                 className="mt-4 inline-block text-[hsl(var(--primary))] font-semibold  transition-colors"
               >
                 Read More →
@@ -72,7 +76,7 @@ const BlogSection = () => {
           <div className="group bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] border border-[hsl(var(--border))] rounded-lg shadow-lg overflow-hidden transition-all transform hover:-translate-y-2 hover:shadow-2xl">
             <div className="relative w-full h-56">
               <Image
-                src="https://images.unsplash.com/photo-1729008920276-e9e61d13c2db?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://images.unsplash.com/photo-1607798748738-b15c40d33d57?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Blog Post 3"
                 layout="fill"
                 objectFit="cover"
@@ -80,13 +84,16 @@ const BlogSection = () => {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-2xl font-semibold mb-2">Blog Post Title 3</h3>
+              <h3 className="text-2xl font-semibold mb-2">
+                {" "}
+                Why Learn TypeScript
+              </h3>
               <p className="text-[hsl(var(--muted-foreground))]">
-                Learn how to maximize your productivity and achieve more with
-                expert advice.
+                Explore why TypeScript’s type safety and scalability make it a
+                powerful choice over JavaScript.
               </p>
               <a
-                href="#"
+                href="/blogpost/why-learn-typescript"
                 className="mt-4 inline-block text-[hsl(var(--primary))] font-semibold  transition-colors"
               >
                 Read More →
