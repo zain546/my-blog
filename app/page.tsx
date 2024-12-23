@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col items-center justify-center h-1/2">
-        <section className="container px-4 py-8 mx-auto lg:h-128 lg:space-x-8 lg:flex lg:items-center">
+        <section className="container px-8 py-8 mx-auto lg:h-128 lg:space-x-8 lg:flex lg:items-center">
           <div className="w-full text-left lg:w-1/2 lg:-mt-8">
             <p className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-200 mb-2">
               Welcome,

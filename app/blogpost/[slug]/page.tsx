@@ -1,53 +1,62 @@
 import matter from "gray-matter";
 import fs from "fs";
 import { notFound } from "next/navigation";
-//!! I use to unified package to show the blog content in html format.
 import { unified } from "unified";
 import rehypeDocument from "rehype-document";
 import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-//rehype-pretty-code to beautify the code
 import rehypePrettyCode from "rehype-pretty-code";
-//to copy code(add copy button)
 import { transformerCopyButton } from "@rehype-pretty/transformers";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
+import OnThisPage from "@/components/OnThisPage";
+
 export default async function Page({ params }: { params: { slug: string } }) {
-  // const blog = {
-  //   title: "Mastering TypeScript",
-  //   description:
-  //     "Learn the ins and outs of TypeScript with practical examples.",
-  //   slug: "mastering-typescript",
-  //   date: "October 8, 2024",
-  //   author: "Jane Doe",
-  //   content: "<p>This is a cotent of blog page</p>",
-  // };
+  // Path to the Markdown file based on the provided slug
   const filepath = `content/${params.slug}.md`;
+
+  // If the file doesn't exist, return a 404 response
   if (!fs.existsSync(filepath)) {
     notFound();
     return;
   }
+
+  // Read the Markdown file content
   const fileContent = fs.readFileSync(filepath, "utf-8");
+
+  // Use gray-matter to extract the frontmatter (metadata) and the content
   const { content, data: blog } = matter(fileContent);
+
+  // Unified processor pipeline to convert Markdown to HTML
   const processor = unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeDocument, { title: "👋🌍" })
-    .use(rehypeFormat)
-    .use(rehypeStringify)
-    .use(remarkRehype)
+    .use(remarkParse) // Parse Markdown
+    .use(remarkRehype) // Convert Markdown to HTML
+    .use(rehypeDocument, { title: blog.title }) // Wrap content in a basic HTML document
+    .use(rehypeFormat) // Format the HTML output
+    .use(rehypeSlug) // Add unique slugs to headings
+    .use(rehypeAutolinkHeadings) // Add anchor links to headings
     .use(rehypePrettyCode, {
-      theme: "github-dark",
+      theme: "github-dark", // Syntax highlighting theme
       transformers: [
         transformerCopyButton({
-          visibility: "always",
-          feedbackDuration: 3_000,
+          // visibility: "always", // Always show the copy button
+          feedbackDuration: 3000, // Feedback duration in milliseconds
         }),
       ],
-    });
+    })
+    .use(rehypeStringify); // Convert processed HTML into a string
+
+  // Convert the content to HTML
   const htmlContent = (await processor.process(content)).toString();
+
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* OnThisPage Navigation */}
+      <OnThisPage htmlContent={htmlContent} />
+
+      {/* Blog Content */}
       <div className="flex flex-col gap-6 sm:gap-8">
         {/* Title and Author Section */}
         <div className="flex flex-wrap items-center gap-2 sm:gap-4">
@@ -69,14 +78,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
           {blog.date}
         </p>
 
-        {/* Content Section */}
+        {/* Blog Content Section */}
         <div
-          className="  lg:prose-lg dark:prose-invert max-w-none"
+          className="prose lg:prose-lg dark:prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       </div>
     </div>
   );
 }
-
-//i use tailwind typography package to show the html without affecting its styling with tailwind css.
