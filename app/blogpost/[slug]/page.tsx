@@ -13,9 +13,10 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import OnThisPage from "@/components/OnThisPage";
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: Promise<{ slug: string } >}) {
   // Path to the Markdown file based on the provided slug
-  const filepath = `content/${params.slug}.md`;
+  const {slug} = await params
+  const filepath = `content/${slug}.md`;
 
   // If the file doesn't exist, return a 404 response
   if (!fs.existsSync(filepath)) {
