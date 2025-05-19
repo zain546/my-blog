@@ -13,6 +13,17 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import OnThisPage from "@/components/OnThisPage";
 
+// At top of file
+import path from 'path';
+
+export async function generateStaticParams() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'content'));
+
+  return files.map((file) => ({
+    slug: file.replace(/\.md$/, ''),
+  }));
+}
+
 export default async function Page({ params }: { params: Promise<{ slug: string } >}) {
   // Path to the Markdown file based on the provided slug
   const {slug} = await params
