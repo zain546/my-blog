@@ -3,55 +3,16 @@ import fs from "fs";
 import matter from "gray-matter";
 import Link from "next/link";
 
-// interface BlogPost {
-//   title: string;
-//   description: string;
-//   slug: string;
-//   date: string;
-//   author: string;
-//   image: string;
-// }
 const dirContent = fs.readdirSync("content", "utf-8");
 const blogPosts = dirContent.map((file) => {
   const fileContent = fs.readFileSync(`content/${file}`, "utf-8");
   const { data } = matter(fileContent);
   return data;
 });
-// const blogPosts: BlogPost[] = [
-//   {
-//     title: "Exploring React 18",
-//     description: "A deep dive into the new features of React 18.",
-//     slug: "exploring-react-18",
-//     date: "October 10, 2024",
-//     author: "Zain Ali",
-//     image:
-//       "https://images.unsplash.com/photo-1720048170970-3848514c3d60?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//   },
-//   {
-//     title: "Mastering TypeScript",
-//     description:
-//       "Learn the ins and outs of TypeScript with practical examples.",
-//     slug: "mastering-typescript",
-//     date: "October 8, 2024",
-//     author: "Jane Doe",
-//     image:
-//       "https://images.unsplash.com/photo-1728985630341-075aa9277eda?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//   },
-//   {
-//     title: "Advanced CSS Techniques",
-//     description:
-//       "Take your CSS skills to the next level with these advanced techniques.",
-//     slug: "advanced-css-techniques",
-//     date: "October 5, 2024",
-//     author: "John Smith",
-//     image:
-//       "https://images.unsplash.com/photo-1729008920276-e9e61d13c2db?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-//   },
-// ];
 
 export default function BlogPage() {
   return (
-    <section className="container px-12 py-12 mx-auto">
+    <section className="sm:container w-svw border sm:px-12 px-2 py-12 mx-auto">
       <h1 className="mb-10 text-4xl font-bold text-center text-foreground">
         Blog Posts
       </h1>
