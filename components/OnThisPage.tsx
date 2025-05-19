@@ -1,23 +1,37 @@
-"use client";
-import React from "react";
+'use client';
+
+import React, { useEffect, useState } from 'react';
+
+type Heading = {
+  id: string;
+  text: string;
+  level: number;
+};
 
 type OnThisPageProps = {
   htmlContent: string;
 };
 
 const OnThisPage: React.FC<OnThisPageProps> = ({ htmlContent }) => {
-  // Use DOMParser to extract headings from the HTML content
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(htmlContent, "text/html");
+  const [headings, setHeadings] = useState<Heading[]>([]);
 
-  // Select all heading tags (h2, h3, h4, etc.)
-  const headings = Array.from(
-    doc.querySelectorAll("h2, h3, h4, h5, h6")
-  ).map((heading) => ({
-    id: heading.id || heading.textContent?.replace(/\s+/g, "-").toLowerCase(), // Generate ID if not present
-    text: heading.textContent || "",
-    level: parseInt(heading.tagName[1]), // Extract level from the tag name (e.g., h2 -> 2)
-  }));
+  useEffect(() => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+
+    const extracted = Array.from(doc.querySelectorAll('h2, h3, h4, h5, h6')).map(
+      (heading) => {
+        const text = heading.textContent || '';
+        const id = heading.id || text.replace(/\s+/g, '-').toLowerCase();
+        const level = parseInt(heading.tagName.replace('H', ''));
+        return { id, text, level };
+      }
+    );
+
+    setHeadings(extracted);
+  }, [htmlContent]);
+
+  if (headings.length === 0) return null;
 
   return (
     <div className="my-8">
@@ -26,7 +40,8 @@ const OnThisPage: React.FC<OnThisPageProps> = ({ htmlContent }) => {
         {headings.map(({ id, text, level }) => (
           <li
             key={id}
-            className={`pl-${(level - 2) * 4} text-sm lg:text-lg text-gray-700 dark:text-gray-300`}
+            style={{ paddingLeft: `${(level - 2) * 12}px` }} // Dynamic indentation
+            className="text-sm lg:text-base text-gray-700 dark:text-gray-300"
           >
             <a href={`#${id}`} className="hover:underline">
               {text}
